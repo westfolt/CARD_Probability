@@ -11,35 +11,41 @@ namespace CARD_Probability
     {
         //    public int EndRange { get; }
         //    public int EndAzimuth { get; }
-        public double PrSSR { get; set; }
-        private long totalScans;
-        private long totalDetections;
-        private Key pathToCell;
+        public double PrSSR { get; private set; }
+        public long totalScansSSR { get; private set; }
+        public long totalDetectionsSSR { get; private set; }
+        public double PrPSR { get; private set; }
+        public long totalScansPSR { get; private set; }
+        public long totalDetectionsPSR { get; private set; }
+        //private Key pathToCell;
 
         public RadarScreenCell(Key path)
         {
             PrSSR = 0;
-            totalScans = 0;
-            totalDetections = 0;
-            pathToCell = path;
+            totalScansSSR = 0;
+            totalDetectionsSSR = 0;
+            PrPSR = 0;
+            totalScansPSR = 0;
+            totalDetectionsPSR = 0;
+            //pathToCell = path;
 
             //EndAzimuth = endAzimuth;
             //EndRange = endRange;
         }
         public void ReCalculatePR()
         {
-            if (totalScans != 0)
-                PrSSR = (double)totalDetections / totalScans;
+            if (totalScansSSR != 0)
+                PrSSR = (double)totalDetectionsSSR / totalScansSSR;
         }
         public void Detection()
         {
-            totalScans++;
-            totalDetections++;
+            totalScansSSR++;
+            totalDetectionsSSR++;
         }
 
         public void NoDetection()
         {
-            totalScans++;
+            totalScansSSR++;
         }
     }
 }

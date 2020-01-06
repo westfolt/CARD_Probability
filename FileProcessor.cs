@@ -46,7 +46,6 @@ namespace CARD_Probability
                         category = 0;
                         length = 0;
                         break;
-                        break;
                     case 48:
                         int lengthBefore = decodedData.Count;
                         decodedData.AddRange(decoder48.Decode(fileStream.GetSubArray(pointer, pointer + length - 1), 3));
@@ -60,7 +59,6 @@ namespace CARD_Probability
                         pointer += length;
                         category = 0;
                         length = 0;
-                        break;
                         break;
                 }
             } while (pointer < fileStream.Length);

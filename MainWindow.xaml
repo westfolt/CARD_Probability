@@ -4767,7 +4767,9 @@
                     <TextBlock x:Name="AzimuthDisplay" Text="Азимут 0 град" Margin="0,5" Width="180"/>
                     <TextBlock x:Name="RangeDisplay" Text="Дальность 0 км" Margin="0,5" Width="180"/>
                     <TextBlock x:Name="PSR_PR_Display" Text="PR PSR = NaN" Margin="0,5" Width="180"/>
+                    <TextBlock x:Name="PSR_Additional_Info" Text="NaN обн. из NaN скан." Margin="0,5" Width="180"/>
                     <TextBlock x:Name="SSR_PR_Display" Text="PR SSR = NaN" Margin="0,5" Width="180"/>
+                    <TextBlock x:Name="SSR_Additional_Info" Text="NaN обн. из NaN скан." Margin="0,5" Width="180"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Grid.Row="3" Header="Диапазон высот">

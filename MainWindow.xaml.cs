@@ -6045,11 +6045,14 @@ namespace CARD_Probability
 
         private void Sector_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            string Azimuth, Range, PrSSR = "";
-            ViewMethods.ShowSectorInfo((sender as Path).Name, currentFlightLevel, out Azimuth, out Range, out PrSSR);
+            string Azimuth, Range, PrSSR, SSRAdditionalInfo, PrPSR, PSRAdditionalInfo = "";
+            ViewMethods.ShowSectorInfo((sender as Path).Name, currentFlightLevel, out Azimuth, out Range, out PrSSR, out SSRAdditionalInfo, out PrPSR, out PSRAdditionalInfo);
             AzimuthDisplay.Text = Azimuth;
             RangeDisplay.Text = Range;
             SSR_PR_Display.Text = PrSSR;
+            SSR_Additional_Info.Text = SSRAdditionalInfo;
+            PSR_PR_Display.Text = PrPSR;
+            PSR_Additional_Info.Text = PSRAdditionalInfo;
         }
 
         private void Select_Files_Button(object sender, RoutedEventArgs e)

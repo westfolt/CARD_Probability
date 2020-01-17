@@ -36,16 +36,29 @@ namespace CARD_Probability
         {
             if (totalScansSSR != 0)
                 PrSSR = (double)totalDetectionsSSR / totalScansSSR;
+            if (totalScansPSR != 0)
+                PrPSR = (double) totalDetectionsPSR / totalScansPSR;
         }
-        public void Detection()
+        public void SSRDetection()
         {
             totalScansSSR++;
             totalDetectionsSSR++;
         }
 
-        public void NoDetection()
+        public void SSRNoDetection()
         {
             totalScansSSR++;
+        }
+
+        public void PSRDetection()
+        {
+            totalScansPSR++;
+            totalDetectionsPSR++;
+        }
+
+        public void PSRNoDetection()
+        {
+            totalScansPSR++;
         }
     }
 }

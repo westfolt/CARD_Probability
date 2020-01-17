@@ -8,6 +8,8 @@ been written by third-party soft. Decodes 34 and 48 categories, selects cat48 pa
 Added fields for PSR probability calculation and additional info that
 helps operator to estimate information usability (probability calculated from low number of scans is not useful)
 
+17.01
+Added PSR Probability calculation,based on aircrafts already detected by SSR, in PSR sweep area
 TODO:
 add PR calculation for PSR
 add scale adjustments

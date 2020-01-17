@@ -57,7 +57,7 @@ namespace CARD_Probability
             {
                 Cat48 temp = asterix as Cat48;
                 Tracking(temp.TrackNumber, temp.ModeACode.Squawk, temp.ICAOAddress, temp.AircraftID,
-                    temp.FlightLevelValue.Level, temp.TimeOfDay, temp.PolarCoordinates,
+                    temp.FlightLevelValue.Level, temp.TimeOfDay, temp.PolarCoordinates, temp.TargetReportDescriptorValue,
                     temp.TargetReportDescriptorValue.Type != TargetReportType.NoDetection);
 
             }
@@ -74,7 +74,7 @@ namespace CARD_Probability
             return PPI_Azimuth_15_Range_20[key.Azimuth, key.Range, key.Altitude];
         }
         private static void Tracking(int trackNumber, int squawk, string icaoAddress, string aircraftId, int altitude,
-            double lastTimeOfDay, PolarPosition polarPosition, bool detected)
+            double lastTimeOfDay, PolarPosition polarPosition,TargetReportDescriptor targetReport, bool detected)
         {
             //любой трек от RHP (категория 48) должен иметь трек, но для идентификации нужно хотя бы еще одно значение
             if (trackNumber == 0 && (squawk == 0 && icaoAddress == "" && (aircraftId == "" || aircraftId.Contains("@"))))
@@ -103,7 +103,9 @@ namespace CARD_Probability
                         TrackTable[i].UpdateFlightData(squawk, icaoAddress, aircraftId, altitude, lastTimeOfDay, polarPosition);
                         //обнуляем счетчик потерянных
                         TrackTable[i].LostCount = 0;
-                        PlaceToTable(true, PPIResolution.Azimuth_15_Range_20, polarPosition, TrackTable[i].Altitude);
+                        bool PSRdetection = (targetReport.Type == TargetReportType.ModeSAllCall_PSR) ||
+                                            (targetReport.Type == TargetReportType.ModeSRollCall_PSR) || (targetReport.Type == TargetReportType.SSR_PSR);
+                        PlaceToTable(polarPosition.Distance <= 62, PSRdetection, true, PPIResolution.Azimuth_15_Range_20, polarPosition, TrackTable[i].Altitude);
                         return;
                     }
                     else//если это был пропуск цели
@@ -111,12 +113,12 @@ namespace CARD_Probability
                         if (TrackTable[i].LostCount == 2)
                         {
                             indexesForDelete.Add(i);
-                            PlaceToTable(false, PPIResolution.Azimuth_15_Range_20, TrackTable[i].Position, TrackTable[i].Altitude);
+                            PlaceToTable(polarPosition.Distance <= 62, false, false, PPIResolution.Azimuth_15_Range_20, TrackTable[i].Position, TrackTable[i].Altitude);
                         }
                         else
                         {
                             TrackTable[i].LostCount++;
-                            PlaceToTable(false, PPIResolution.Azimuth_15_Range_20, TrackTable[i].Position, TrackTable[i].Altitude);
+                            PlaceToTable(polarPosition.Distance <= 62, false, false, PPIResolution.Azimuth_15_Range_20, TrackTable[i].Position, TrackTable[i].Altitude);
                         }
                         return;
                     }
@@ -132,12 +134,14 @@ namespace CARD_Probability
             {
                 TrackTable.Add(new Flight(trackNumber, squawk, icaoAddress, aircraftId, altitude, lastTimeOfDay,
                     polarPosition));
-                PlaceToTable(true, PPIResolution.Azimuth_15_Range_20, polarPosition, altitude);
+                bool PSRdetection = (targetReport.Type == TargetReportType.ModeSAllCall_PSR) ||
+                                    (targetReport.Type == TargetReportType.ModeSRollCall_PSR) || (targetReport.Type == TargetReportType.SSR_PSR);
+                PlaceToTable(polarPosition.Distance<=62, PSRdetection, true, PPIResolution.Azimuth_15_Range_20, polarPosition, altitude);
             }
 
         }
         //пока не принимает значений масштаба, установлен вручную
-        private static void PlaceToTable(bool detected, PPIResolution ppiResolution, PolarPosition polarPosition, int FlightLevel)
+        private static void PlaceToTable(bool inPSRZone, bool detectedPSR, bool detectedSSR, PPIResolution ppiResolution, PolarPosition polarPosition, int FlightLevel)
         {
             double NM = 1.852; //морская миля, пересчет для отображения (экран в километрах, астерикс в милях)
             double convertedDistance = polarPosition.Distance * NM;
@@ -153,13 +157,25 @@ namespace CARD_Probability
                         if (range == 25)
                             range = 24;
                         int flightLevel = FlightLevel / 200;// единица высоты - 1/4 FL, а так же разрешение ячеек по 50 FL
-                        if (detected)
+                        if (detectedSSR)
                         {
-                            PPI_Azimuth_15_Range_20[azimuth, range, flightLevel].Detection();
+                            PPI_Azimuth_15_Range_20[azimuth, range, flightLevel].SSRDetection();
                         }
                         else
                         {
-                            PPI_Azimuth_15_Range_20[azimuth, range, flightLevel].NoDetection();
+                            PPI_Azimuth_15_Range_20[azimuth, range, flightLevel].SSRNoDetection();
+                        }
+
+                        if (inPSRZone)
+                        {
+                            if (detectedPSR)
+                            {
+                                PPI_Azimuth_15_Range_20[azimuth,range,flightLevel].PSRDetection();
+                            }
+                            else
+                            {
+                                PPI_Azimuth_15_Range_20[azimuth,range,flightLevel].PSRNoDetection();
+                            }
                         }
                     }
                     break;

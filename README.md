@@ -13,3 +13,6 @@ Added PSR Probability calculation,based on aircrafts already detected by SSR, in
 TODO:
 add PR calculation for PSR
 add scale adjustments
+
+29.01
+Additional scales added, not used yet

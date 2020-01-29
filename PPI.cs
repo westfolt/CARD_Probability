@@ -12,6 +12,14 @@ namespace CARD_Probability
     {
         //1st Azimuth(clockwise from 0), 2nd Range(from close), 3rd Altitude(from lowest)
         public static RadarScreenCell[,,] PPI_Azimuth_15_Range_20;
+        public static RadarScreenCell[,,] PPI_Azimuth_15_Range_25;
+        public static RadarScreenCell[,,] PPI_Azimuth_10_Range_20;
+        public static RadarScreenCell[,,] PPI_Azimuth_10_Range_25;
+        public static RadarScreenCell[,,] PPI_Azimuth_20_Range_20;
+        public static RadarScreenCell[,,] PPI_Azimuth_20_Range_25;
+        public static RadarScreenCell[,,] PPI_Azimuth_15_Range5;
+
+
         private static List<Flight> TrackTable;
 
         static PPI()
@@ -31,6 +39,7 @@ namespace CARD_Probability
             TrackTable = new List<Flight>();
         }
 
+        //заново инициализирует массивы для хранения данных отображения и таблицу треков
         public static void ReinitializePPI()
         {
             PPI_Azimuth_15_Range_20 = new RadarScreenCell[24, 25, 10];

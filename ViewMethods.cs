@@ -41,5 +41,17 @@ namespace CARD_Probability
             FlightLevel = 0;
             FlightLevel = Convert.ToInt32(input.Split('_')[1]) / 50;
         }
+
+        public static void ShowAzimuthStep(string input, out int AzimuthStep)
+        {
+            AzimuthStep = 0;
+            AzimuthStep = Convert.ToInt32(input.Split('_')[2]);
+        }
+
+        public static void ShowRangeStep(string input, out int RangeStep)
+        {
+            RangeStep = 0;
+            RangeStep = Convert.ToInt32(input.Split('_')[2]);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace CARD_Probability
 {
     static class ViewMethods
     {
-        public static void ShowSectorInfo(string sectorName, int flightLevel, out string Azimuth, out string Range, out string PrSSR, out string SSRAdditionalInfo, out string PrPSR, out string PSRAdditionalInfo)
+        public static void ShowSectorInfo(string sectorName, int azState, int rgState, int flState, out string Azimuth, out string Range, out string PrSSR, out string SSRAdditionalInfo, out string PrPSR, out string PSRAdditionalInfo)
         {
             Azimuth = "";
             Range = "";
@@ -22,9 +22,10 @@ namespace CARD_Probability
             string[] data = sectorName.Split('_');
             try
             {
-                Azimuth = $"Азимут {data[1]} - {data[2]} град";
-                Range = $"Дальность {data[4]} - {data[5]} км";
-                temp = PPI.SelectByKey(MainWindow.GetKey(sectorName, flightLevel));
+                Azimuth = $"Азимут {data[2]} - {data[3]} град";
+                Range = $"Дальность {data[5]} - {data[6]} км";
+                Key keyToCell = MainWindow.GetKey(sectorName, flState);
+                temp = PPI.GetCell(azState, rgState, keyToCell.Azimuth, keyToCell.Range, keyToCell.Altitude);
                 PrSSR = $"PR SSR = {temp.PrSSR.ToString("f4")}";
                 SSRAdditionalInfo = $"{temp.totalDetectionsSSR} обн. из {temp.totalScansSSR} скан.";
                 PrPSR = $"PR PSR = {temp.PrPSR.ToString("f4")}";

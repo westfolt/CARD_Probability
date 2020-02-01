@@ -16,3 +16,7 @@ add scale adjustments
 
 29.01
 Additional scales added, not used yet
+
+01.02
+Scales are working now properly
+Near radar zone scale added

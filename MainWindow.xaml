@@ -13,7 +13,7 @@
             <ColumnDefinition Width="200px"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" x:Name="RadarDisplay_Az_15_Rg_20" Visibility="Collapsed">
-             <Path x:Name="A15R20_Az_0_15_Rg_480_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 15 0 1 129.409,-482.962 L 124.233,-463.644 A 480,480 15 0 0 0,-480 z">
+            <Path x:Name="A15R20_Az_0_15_Rg_480_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 15 0 1 129.409,-482.962 L 124.233,-463.644 A 480,480 15 0 0 0,-480 z">
                 <Path.RenderTransform>
                     <TranslateTransform X="500" Y="500"/>
                 </Path.RenderTransform>
@@ -4737,10 +4737,10 @@
                         <RotateTransform Angle="345" CenterX="500" CenterY="500"/>
                     </TransformGroup>
                 </Path.RenderTransform>
-            </Path> 
+            </Path>
         </Grid>
         <Grid Grid.Column="0" x:Name="RadarDisplay_Az_15_Rg_25" Visibility="Collapsed">
-             <Path x:Name="A15R25_Az_0_15_Rg_475_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 15 0 1 129.410,-482.963 L 122.939,-458.815 A 475,475 15 0 0 0,-475 z">
+            <Path x:Name="A15R25_Az_0_15_Rg_475_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 15 0 1 129.410,-482.963 L 122.939,-458.815 A 475,475 15 0 0 0,-475 z">
                 <Path.RenderTransform>
                     <TranslateTransform X="500" Y="500"/>
                 </Path.RenderTransform>
@@ -8519,10 +8519,10 @@
                         <RotateTransform Angle="345" CenterX="500" CenterY="500"/>
                     </TransformGroup>
                 </Path.RenderTransform>
-            </Path> 
+            </Path>
         </Grid>
         <Grid Grid.Column="0" x:Name="RadarDisplay_Az_15_Rg_5" Visibility="Collapsed">
-             <Path x:Name="A15R5_Az_0_15_Rg_60_65" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-487.5 A 487.5,487.5 15 0 1 126.174,-470.889 L 116.469,-434.667 A 450,450 15 0 0 0,-450 z">
+            <Path x:Name="A15R5_Az_0_15_Rg_60_65" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-487.5 A 487.5,487.5 15 0 1 126.174,-470.889 L 116.469,-434.667 A 450,450 15 0 0 0,-450 z">
                 <Path.RenderTransform>
                     <TranslateTransform X="487.5" Y="487.5"/>
                 </Path.RenderTransform>
@@ -10978,10 +10978,10 @@
                         <RotateTransform Angle="345" CenterX="487.5" CenterY="487.5"/>
                     </TransformGroup>
                 </Path.RenderTransform>
-            </Path> 
+            </Path>
         </Grid>
         <Grid Grid.Column="0" x:Name="RadarDisplay_Az_10_Rg_20" Visibility="Collapsed">
-             <Path x:Name="A10R20_Az_0_10_Rg_480_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 10 0 1 86.824,-492.404 L 83.351,-472.708 A 480,480 10 0 0 0,-480 z">
+            <Path x:Name="A10R20_Az_0_10_Rg_480_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 10 0 1 86.824,-492.404 L 83.351,-472.708 A 480,480 10 0 0 0,-480 z">
                 <Path.RenderTransform>
                     <TranslateTransform X="500" Y="500"/>
                 </Path.RenderTransform>
@@ -18105,10 +18105,10 @@
                         <RotateTransform Angle="350" CenterX="500" CenterY="500"/>
                     </TransformGroup>
                 </Path.RenderTransform>
-            </Path> 
+            </Path>
         </Grid>
         <Grid Grid.Column="0" x:Name="RadarDisplay_Az_10_Rg_25" Visibility="Collapsed">
-             <Path x:Name="A10R25_Az_0_10_Rg_475_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 10 0 1 86.824,-492.404 L 82.483,-467.784 A 475,475 10 0 0 0,-475 z">
+            <Path x:Name="A10R25_Az_0_10_Rg_475_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 10 0 1 86.824,-492.404 L 82.483,-467.784 A 475,475 10 0 0 0,-475 z">
                 <Path.RenderTransform>
                     <TranslateTransform X="500" Y="500"/>
                 </Path.RenderTransform>
@@ -23807,10 +23807,10 @@
                         <RotateTransform Angle="350" CenterX="500" CenterY="500"/>
                     </TransformGroup>
                 </Path.RenderTransform>
-            </Path> 
+            </Path>
         </Grid>
         <Grid Grid.Column="0" x:Name="RadarDisplay_Az_20_Rg_20" Visibility="Collapsed">
-             <Path x:Name="A20R20_Az_0_20_Rg_480_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 20 0 1 171.010,-469.846 L 164.170,-451.052 A 480,480 20 0 0 0,-480 z">
+            <Path x:Name="A20R20_Az_0_20_Rg_480_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 20 0 1 171.010,-469.846 L 164.170,-451.052 A 480,480 20 0 0 0,-480 z">
                 <Path.RenderTransform>
                     <TranslateTransform X="500" Y="500"/>
                 </Path.RenderTransform>
@@ -27334,10 +27334,10 @@
                         <RotateTransform Angle="340" CenterX="500" CenterY="500"/>
                     </TransformGroup>
                 </Path.RenderTransform>
-            </Path> 
+            </Path>
         </Grid>
         <Grid Grid.Column="0" x:Name="RadarDisplay_Az_20_Rg_25" Visibility="Collapsed">
-             <Path x:Name="A20R25_Az_0_20_Rg_475_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 20 0 1 171.010,-469.846 L 162.460,-446.354 A 475,475 20 0 0 0,-475 z">
+            <Path x:Name="A20R25_Az_0_20_Rg_475_500" Stroke="Black" Fill="White" MouseEnter="Sector_OnMouseEnter" Data="M 0,-500 A 500,500 20 0 1 171.010,-469.846 L 162.460,-446.354 A 475,475 20 0 0 0,-475 z">
                 <Path.RenderTransform>
                     <TranslateTransform X="500" Y="500"/>
                 </Path.RenderTransform>
@@ -30156,7 +30156,7 @@
                         <RotateTransform Angle="340" CenterX="500" CenterY="500"/>
                     </TransformGroup>
                 </Path.RenderTransform>
-            </Path> 
+            </Path>
         </Grid>
         <GridSplitter Grid.Column="1" Background="LightGray" Width="10"/>
         <Grid Grid.Column="2" x:Name="Preferences" Margin="0,0,-50,0">
@@ -30211,7 +30211,10 @@
             <StackPanel Grid.Row="4">
                 <Button x:Name="Selecting_flies" Content="Выбрать файлы" Background="Green" Height="30" FontSize="18" FontFamily="Arial" Margin="5,10" Click="Select_Files_Button"/>
                 <Button x:Name="RecalculateButton" IsEnabled="False" Background="DarkOrange" Height="40" FontFamily="Arial" FontSize="18" Content="ПЕРЕСЧИТАТЬ" Margin="5,10" Click="Recalculate"/>
-                <TextBox x:Name="BusyIndicatorBlock" Background="Red" Height="40" FontFamily="Arial" FontSize="18" Foreground ="White" Text="Выберите файлы" Margin="5,10" VerticalContentAlignment="Center"  TextAlignment="Center" IsReadOnly="True"/>
+                <Grid>
+                    <TextBlock x:Name="Zakrivator" Margin="5,10" Panel.ZIndex="2"/>
+                    <TextBox x:Name="BusyIndicatorBlock" Background="Red" Height="40" FontFamily="Arial" FontSize="18" Foreground ="White" Text="Выберите файлы" Margin="5,10" VerticalContentAlignment="Center"  TextAlignment="Center" IsReadOnly="True"/>
+                </Grid>
             </StackPanel>
         </Grid>
     </Grid>

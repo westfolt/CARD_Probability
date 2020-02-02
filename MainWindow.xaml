@@ -30161,8 +30161,9 @@
         <GridSplitter Grid.Column="1" Background="LightGray" Width="10"/>
         <Grid Grid.Column="2" x:Name="Preferences" Margin="0,0,-50,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.15*"/>
-                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.11*"/>
+                <RowDefinition Height="0.11*"/>
+                <RowDefinition Height="0.08*"/>
                 <RowDefinition Height="0.23*"/>
                 <RowDefinition Height="0.3*"/>
                 <RowDefinition Height="0.17*"/>
@@ -30182,7 +30183,13 @@
                     <!--<RadioButton GroupName="Range" x:Name="Rg_step_30" Content="30"/>-->
                 </StackPanel>
             </GroupBox>
-            <GroupBox Grid.Row="2" Header = "Выбранная ячейка" FontFamily="Arial" FontSize="16" Padding="10">
+            <GroupBox Grid.Row="2" Header ="Отображать на экране" FontFamily="Arial" FontSize="16" Padding="10">
+            <StackPanel>
+                <RadioButton GroupName="PrDisplay" x:Name="PR_Display_PSR" Checked="PR_Display_Checked" Content="Вероятность PSR"/>
+                <RadioButton GroupName="PrDisplay" x:Name="PR_Display_SSR" Checked="PR_Display_Checked" Content="Вероятность SSR"/>
+            </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="3" Header = "Выбранная ячейка" FontFamily="Arial" FontSize="16" Padding="10">
                 <StackPanel>
                     <TextBlock x:Name="AzimuthDisplay" Text="Азимут 0 град" Margin="0,5" Width="180"/>
                     <TextBlock x:Name="RangeDisplay" Text="Дальность 0 км" Margin="0,5" Width="180"/>
@@ -30192,7 +30199,7 @@
                     <TextBlock x:Name="SSR_Additional_Info" Text="NaN обн. из NaN скан." Margin="0,5" Width="180"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Grid.Row="3" Header="Диапазон высот">
+            <GroupBox Grid.Row="4" Header="Диапазон высот">
                 <StackPanel>
                     <RadioButton GroupName="Altitude" x:Name="FL_0_50" Content="0FL - 50FL" Checked="FL_Checked"/>
                     <RadioButton GroupName="Altitude" x:Name="FL_50_100" Content="50FL - 100FL" Checked="FL_Checked"/>
@@ -30208,7 +30215,7 @@
                     <ProgressBar x:Name="Bar" Margin="0,5,0,0" Minimum="0" Maximum="100" Value="0" Height="25"/>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Grid.Row="4">
+            <StackPanel Grid.Row="5">
                 <Button x:Name="Selecting_flies" Content="Выбрать файлы" Background="Green" Height="30" FontSize="18" FontFamily="Arial" Margin="5,10" Click="Select_Files_Button"/>
                 <Button x:Name="RecalculateButton" IsEnabled="False" Background="DarkOrange" Height="40" FontFamily="Arial" FontSize="18" Content="ПЕРЕСЧИТАТЬ" Margin="5,10" Click="Recalculate"/>
                 <Grid>

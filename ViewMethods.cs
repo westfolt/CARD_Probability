@@ -54,5 +54,19 @@ namespace CARD_Probability
             RangeStep = 0;
             RangeStep = Convert.ToInt32(input.Split('_')[2]);
         }
+
+        public static void ShowPrToDisplayState(string input, out int PrToDisplayStep)
+        {
+            PrToDisplayStep = 1; //SSR by default
+            string selected = (input.Split('_'))[2];
+            if (selected == "PSR")
+            {
+                PrToDisplayStep = 0;
+            }
+            else
+            {
+                PrToDisplayStep = 1;
+            }
+        }
     }
 }

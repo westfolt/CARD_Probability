@@ -20,3 +20,6 @@ Additional scales added, not used yet
 01.02
 Scales are working now properly
 Near radar zone scale added
+
+02.02
+Added ability to choose source for color on screen: PSR or SSR detection probability

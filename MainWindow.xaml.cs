@@ -43,6 +43,7 @@ namespace CARD_Probability
         private static int azState = 15;
         private static int rgState = 20;
         private static int flState = 0;
+        private static int prDisplayState = 1; //0 - PSR, 1 - SSR
         private static Dictionary<Key, Path> currentLink = null;
 
         public MainWindow()
@@ -106,9 +107,12 @@ namespace CARD_Probability
             int total = fileNames.Length;
             double tick = 100.0 / total;
             token = 0.0;
-
+            //to find file currently in use
+            
             foreach (string fileName in fileNames)
             {
+                //FileInfo fI = new FileInfo(fileName)
+                //if(fI.LastWriteTime-DateTime.Now)
                 using (FileStream fs = new FileStream(fileName, FileMode.Open))
                 {
                     byte[] temp = new byte[fs.Length];
@@ -161,7 +165,20 @@ namespace CARD_Probability
                 {
                     for (int rg = 0; rg < 65 / rgState; rg++)
                     {
-                        double temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrSSR;
+                        double temp = 0;
+                        if (prDisplayState == 1)
+                        {
+                            temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrSSR;
+                        }
+                        else if (prDisplayState == 0)
+                        {
+                            temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrPSR;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Wrong PRDisplayState selected!!!");
+                        }
+
                         //Path tempPath = GetPath(az, rg, flState);
                         if (temp >= 0.95)
                         {
@@ -188,9 +205,19 @@ namespace CARD_Probability
                 {
                     for (int rg = 0; rg < 500 / rgState; rg++)
                     {
-                        RadarScreenCell cell = PPI.GetCell(azState, rgState, az, rg, flState);
-                        double temp = cell.PrSSR;//(PPI.GetCell(azState,rgState,az,rg,flState)).PrSSR;
-                        //Path tempPath = GetPath(az, rg, flState);
+                        double temp = 0;
+                        if (prDisplayState == 1)
+                        {
+                            temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrSSR;
+                        }
+                        else if (prDisplayState == 0)
+                        {
+                            temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrPSR;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Wrong PRDisplayState selected!!!");
+                        }
                         if (temp >= 0.95)
                         {
                             GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Green);
@@ -267,6 +294,16 @@ namespace CARD_Probability
                 Redraw();
             }
         }
+        private void PR_Display_Checked(object sender, RoutedEventArgs e)
+        {
+            int PrDisplay;
+            ViewMethods.ShowPrToDisplayState((sender as RadioButton).Name, out PrDisplay);
+            prDisplayState = PrDisplay;
+            if(!firstInterfaceLoad)
+            {
+                Redraw();
+            }
+        }
 
         //получает путь к ячейке исходя из полученных данных
         public Path GetPath(int x, int y, int z)
@@ -316,6 +353,8 @@ namespace CARD_Probability
             Az_step_10.IsEnabled = false;
             Az_step_15.IsEnabled = false;
             Az_step_20.IsEnabled = false;
+            PR_Display_PSR.IsEnabled = false;
+            PR_Display_SSR.IsEnabled = false;
             Selecting_flies.IsEnabled = false;
             RecalculateButton.IsEnabled = false;
         }
@@ -334,10 +373,16 @@ namespace CARD_Probability
             Rg_step_5.IsEnabled = true;
             Rg_step_20.IsEnabled = true;
             Rg_step_25.IsEnabled = true;
+            PR_Display_PSR.IsEnabled = true;
+            PR_Display_SSR.IsEnabled = true;
             //Rg_step_30.IsEnabled = true;
-            Az_step_10.IsEnabled = true;
-            Az_step_15.IsEnabled = true;
-            Az_step_20.IsEnabled = true;
+            if (rgState != 5)
+            {
+                Az_step_10.IsEnabled = true;
+                Az_step_15.IsEnabled = true;
+                Az_step_20.IsEnabled = true;
+            }
+
             Selecting_flies.IsEnabled = true;
             RecalculateButton.IsEnabled = false;
             BusyIndicatorBlock.Text = "Готово";
@@ -361,12 +406,15 @@ namespace CARD_Probability
             Az_step_10.IsEnabled = true;
             Az_step_15.IsEnabled = true;
             Az_step_20.IsEnabled = true;
+            PR_Display_PSR.IsEnabled = true;
+            PR_Display_SSR.IsEnabled = true;
             Selecting_flies.IsEnabled = true;
             RecalculateButton.IsEnabled = false;
             //FL_50_100.IsChecked = true;
             FL_0_50.IsChecked = true;
             Rg_step_20.IsChecked = true;
             Az_step_15.IsChecked = true;
+            PR_Display_SSR.IsChecked = true;
             BusyIndicatorBlock.Text = "Выберите файлы";
             RadarDisplay_Az_15_Rg_20.Visibility = Visibility.Visible;
             RadarDisplay_Az_15_Rg_25.Visibility = Visibility.Collapsed;
@@ -38739,5 +38787,7 @@ namespace CARD_Probability
                     break;
             }
         }
+
+        
     }
 }

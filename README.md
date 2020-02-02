@@ -22,4 +22,6 @@ Scales are working now properly
 Near radar zone scale added
 
 02.02
+Minor bug fixes
 Added ability to choose source for color on screen: PSR or SSR detection probability
+Ability to work with files currently in use

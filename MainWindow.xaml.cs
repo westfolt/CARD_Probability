@@ -108,12 +108,27 @@ namespace CARD_Probability
             double tick = 100.0 / total;
             token = 0.0;
             //to find file currently in use
-            
+            TimeSpan minSpan = TimeSpan.FromMinutes(2);
+
             foreach (string fileName in fileNames)
             {
-                //FileInfo fI = new FileInfo(fileName)
-                //if(fI.LastWriteTime-DateTime.Now)
-                using (FileStream fs = new FileStream(fileName, FileMode.Open))
+                string localFileName = fileName;
+                FileInfo fI = new FileInfo(fileName);
+                //if file was changed less then 2 minutes ago - it is in use, so we work only with copy of it
+                TimeSpan currentSpan = (fI.LastWriteTime - DateTime.Now).Duration();
+                if (currentSpan < minSpan)
+                {
+                    //deleting if already exists
+                    if (File.Exists("temp.log"))
+                    {
+                        File.Delete("temp.log");
+                    }
+
+                    fI.CopyTo("temp.log");
+                    localFileName = "temp.log";
+                }
+
+                using (FileStream fs = new FileStream(localFileName, FileMode.Open))
                 {
                     byte[] temp = new byte[fs.Length];
                     fs.Read(temp, 0, temp.Length);
@@ -134,7 +149,11 @@ namespace CARD_Probability
                 {
                     token += tick;
                 }
-
+                //deleting temp file
+                if (File.Exists("temp.log"))
+                {
+                    File.Delete("temp.log");
+                }
                 this.Dispatcher.BeginInvoke((DispatcherPriority.Normal), (ThreadStart) delegate() { Bar.Value = token;});
 
             }

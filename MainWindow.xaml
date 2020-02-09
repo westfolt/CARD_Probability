@@ -30213,6 +30213,7 @@
                     <RadioButton GroupName="Altitude" x:Name="FL_450_500" Content="450FL - 500FL" Checked="FL_Checked"/>
                     <TextBlock Text="Обработка данных" FontFamily="Arial" FontSize="16" Margin="0,0,0,0"/>
                     <ProgressBar x:Name="Bar" Margin="0,5,0,0" Minimum="0" Maximum="100" Value="0" Height="25"/>
+                    <Button x:Name="ShowHelpButton" Height="40" Margin="5,10,5,0" Background="Azure" FontSize="18" FontFamily="Arial" Content="Помощь" Click="ShowHelpButton_OnClick"/>
                 </StackPanel>
             </GroupBox>
             <StackPanel Grid.Row="5">

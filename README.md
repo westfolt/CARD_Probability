@@ -25,3 +25,6 @@ Near radar zone scale added
 Minor bug fixes
 Added ability to choose source for color on screen: PSR or SSR detection probability
 Ability to work with files currently in use
+
+09.02
+Help added, PR coefficients to display changed

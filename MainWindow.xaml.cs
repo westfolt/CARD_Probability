@@ -60,6 +60,7 @@ namespace CARD_Probability
 
             FillPaths();
             InitialStartGUI();
+            ShowHelp();
         }
 
         private void Sector_OnMouseEnter(object sender, MouseEventArgs e)
@@ -185,35 +186,49 @@ namespace CARD_Probability
                     for (int rg = 0; rg < 65 / rgState; rg++)
                     {
                         double temp = 0;
-                        if (prDisplayState == 1)
+                        if (prDisplayState == 1)//PR SSR selected
                         {
                             temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrSSR;
+                            if (temp >= 0.95)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Green);
+                            }
+                            else if (temp >= 0.9)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Yellow);
+                            }
+                            else if (temp > 0)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Red);
+                            }
+                            else
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.White);
+                            }
                         }
                         else if (prDisplayState == 0)
                         {
                             temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrPSR;
+                            if (temp >= 0.8)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Green);
+                            }
+                            else if (temp >= 0.75)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Yellow);
+                            }
+                            else if (temp > 0)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Red);
+                            }
+                            else
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.White);
+                            }
                         }
                         else
                         {
                             throw new ArgumentException("Wrong PRDisplayState selected!!!");
-                        }
-
-                        //Path tempPath = GetPath(az, rg, flState);
-                        if (temp >= 0.95)
-                        {
-                            GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Green);
-                        }
-                        else if (temp >= 0.85)
-                        {
-                            GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Yellow);
-                        }
-                        else if (temp > 0)
-                        {
-                            GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Red);
-                        }
-                        else
-                        {
-                            GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.White);
                         }
                     }
                 }
@@ -225,33 +240,49 @@ namespace CARD_Probability
                     for (int rg = 0; rg < 500 / rgState; rg++)
                     {
                         double temp = 0;
-                        if (prDisplayState == 1)
+                        if (prDisplayState == 1)//PR SSR selected
                         {
                             temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrSSR;
+                            if (temp >= 0.95)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Green);
+                            }
+                            else if (temp >= 0.9)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Yellow);
+                            }
+                            else if (temp > 0)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Red);
+                            }
+                            else
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.White);
+                            }
                         }
                         else if (prDisplayState == 0)
                         {
                             temp = (PPI.GetCell(azState, rgState, az, rg, flState)).PrPSR;
+                            if (temp >= 0.8)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Green);
+                            }
+                            else if (temp >= 0.75)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Yellow);
+                            }
+                            else if (temp > 0)
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Red);
+                            }
+                            else
+                            {
+                                GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.White);
+                            }
                         }
                         else
                         {
                             throw new ArgumentException("Wrong PRDisplayState selected!!!");
-                        }
-                        if (temp >= 0.95)
-                        {
-                            GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Green);
-                        }
-                        else if (temp >= 0.85)
-                        {
-                            GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Yellow);
-                        }
-                        else if (temp > 0)
-                        {
-                            GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.Red);
-                        }
-                        else
-                        {
-                            GetPath(az, rg, flState).Fill = new SolidColorBrush(Colors.White);
                         }
                     }
                 }
@@ -38807,6 +38838,22 @@ namespace CARD_Probability
             }
         }
 
-        
+        private void ShowHelp()
+        {
+            MessageBox.Show("Цветовая кодировка:\n" +
+                            "По вероятности обнаружения PSR:\n" +
+                            "-зеленый: PR > 80%;\n" +
+                            "-желтый: 80% > PR > 75%;\n" +
+                            "-красный: 75% > PR;\n\n" +
+                            "По вероятности обнаружения SSR:\n" +
+                            "-зеленый: PR > 95%;\n" +
+                            "-желтый: 95% > PR > 90%\n" +
+                            "-красный: 90% > PR;\n");
+        }
+
+        private void ShowHelpButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ShowHelp();
+        }
     }
 }
